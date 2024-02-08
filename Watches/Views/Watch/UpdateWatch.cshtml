@@ -1,0 +1,28 @@
+﻿@model watch
+
+<h2>Update: @Model.manufacturer_name - @Model.model_name Description</h2>
+
+@using (Html.BeginForm("UpdateWatchToDatabase", "watch", "Post"))
+{
+    <input asp-for="watch_id" type="hidden" value="@Model.watch_id" />
+    
+    <label asp-for="description" class="control-label">Description</label>
+    <input type="text" name="Description" class="form-control" value="@Model.description" />
+
+ 
+    <input type="submit" value="Update Description" class="btn btn-primary" />
+}
+@{
+
+    string referrerUrl = Context.Request.Headers["Referer"].ToString();
+}
+
+@if (!string.IsNullOrEmpty(referrerUrl))
+{
+    <a href="@referrerUrl" class="btn btn-primary">Back</a>
+}
+else
+{
+    <p>No referrer information available.</p>
+}
+

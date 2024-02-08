@@ -1,0 +1,58 @@
+﻿@model watch
+
+<h2>@Model.manufacturer_name - @Model.model_name Information</h2>
+
+
+
+
+<table class="table">
+    <tr>
+        <th>Ranking</th>
+        <th>Manufacturer</th>
+        <th>Model</th>
+        <th>Year Manufactured</th>
+        <th>Price</th>
+    </tr>
+    <tr>
+        <td>@Model.watch_id</td>
+        <td>@Model.manufacturer_name</td>
+        <td>@Model.model_name</td>
+        <td>@Model.manufactured_year</td>
+        <td>@Model.price</td>
+    </tr>
+</table>
+
+@{
+
+    string imagePath = $"~/Images/Large/watch_{Model.watch_id}.jpg";
+}
+
+<div style="text-align: center;">
+<img src="@Url.Content(imagePath)" alt="@Model.model_name" style="max-width: 800px; height: auto;" />
+</div>
+
+<table class="table">
+
+
+    <tr>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>@Model.description</td>
+    </tr>
+</table>
+
+
+
+<div style="display: flex; align-items: center;">
+    @using (Html.BeginForm("DeleteWatch", "Watch", "Post"))
+    {
+        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this product" style="margin-right: 10px; padding: 10px; background-color: #007bff; color: #fff; border: none; cursor: pointer; text-decoration: none;" />
+        <input type="hidden" asp-for="watch_id" value="@Model.watch_id" />
+    }
+
+    <a href="/Watch/UpdateWatch/@Model.watch_id" style="padding: 10px; background-color: #007bff; color: #fff; text-decoration: none; border: none; cursor: pointer;">Update Description</a>
+</div>
+
+
+

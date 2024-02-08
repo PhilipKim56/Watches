@@ -1,0 +1,21 @@
+﻿@model watch
+
+<h2>Create a New Product</h2>
+
+@using (Html.BeginForm("InsertWatchToDataBase", "Watch", "Post"))
+{
+    <input asp-for="watch_id" type="hidden" value="" />
+
+    <label asp-for="model_name" class="control-label">Model</label>
+    <input type="text" name="model_name" class="form-control" value="" />
+
+    <label asp-for="manufacturer_name" class="control-label">Manufacturer</label>
+    <input type="text" name="Manufacturer_name" class="form-control" value="" />
+
+    <label asp-for="price" class="control-label">Price</label>
+    <input type="text" name="price" class="form-control" />
+       
+
+    <input type="submit" value="Create Product" class="btn btn-primary" />
+}
+

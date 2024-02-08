@@ -1,0 +1,26 @@
+﻿@model IEnumerable<watch>
+
+<h2>Top 25 Most Expencive Watches</h2>
+<table class="table">
+    <tr>
+        <th>Ranking</th>
+        <th>Manufacturer</th>
+        <th>Model</th>
+
+    </tr>
+
+    @foreach (var product in @Model)
+    {
+        <tr>
+            <td><a href="/Watch/ViewWatch/@product.watch_id">@product.watch_id</a></td>
+            <td>@product.manufacturer_name</td>
+            <td>@product.model_name</td>
+
+
+        </tr>
+    }
+
+</table>
+<div style="display: block">
+    <a href="/Watch/InsertWatch/">Add New Watch</a>
+</div>
